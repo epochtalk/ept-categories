@@ -12,7 +12,10 @@ module.exports = {
         name: Joi.string().min(1).max(255).required()
       })).unique().min(1)
     },
-    pre: [ { method: 'common.categories.clean(sanitizer, payload)' } ]
+    pre: [
+      { method: 'auth.categories.create(server, auth)' },
+      { method: 'common.categories.clean(sanitizer, payload)' },
+    ]
   },
   handler: function(request, reply) {
     var promise = Promise.map(request.payload, function(cat) {

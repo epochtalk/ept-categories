@@ -7,7 +7,8 @@ module.exports = {
   config: {
     auth: { strategy: 'jwt' },
     plugins: { acls: 'categories.delete' },
-    validate: { payload: Joi.array().items(Joi.string().required()).unique().min(1) }
+    validate: { payload: Joi.array().items(Joi.string().required()).unique().min(1) },
+    pre: [ { method: 'auth.categories.delete(server, auth)' } ]
   },
   handler: function(request, reply) {
     var promise = Promise.map(request.payload, function(catId) {
