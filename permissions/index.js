@@ -44,7 +44,9 @@ module.exports = {
     administrator: administrator,
     globalModerator: {},
     moderator: {},
+    patroller: {},
     user: {},
+    newbie: {},
     banned: {},
     anonymous: {},
     private: {}
