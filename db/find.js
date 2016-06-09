@@ -7,7 +7,7 @@ var NotFoundError = Promise.OperationalError;
 
 module.exports = function(id) {
   id = helper.deslugify(id);
-  var q = 'SELECT id, name, view_order, viewable_by, postable_by, imported_at FROM categories WHERE id = $1';
+  var q = 'SELECT id, name, view_order, viewable_by, imported_at FROM categories WHERE id = $1';
   var params = [id];
   return db.sqlQuery(q, params)
   .then(function(rows) {
